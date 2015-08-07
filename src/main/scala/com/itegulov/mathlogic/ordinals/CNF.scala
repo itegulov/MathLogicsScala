@@ -179,6 +179,7 @@ case class Poly(elements: List[ωElement], atom: Atom) extends CNF {
       case t@Atom(n) => Poly(l1, t)
       case Poly(l2, a) => Poly(l1 ::: l2, a)
     }
+    case _ => throw new IllegalStateException("Something got wrong: can't get finite subOrdinal from such Poly")
   }
 
   override def firstElement: CNF = Poly(elements.head :: Nil, Atom(0))
